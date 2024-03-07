@@ -9,13 +9,13 @@
 To install the library, run:
 
 ```bash
-npm install svelte-face
+npm install svelte-faces
 ```
 
 **or**
 
 ```bash
-yarn add svelte-face
+yarn add svelte-faces
 ```
 
 ### Usage
@@ -23,7 +23,7 @@ yarn add svelte-face
 1. **Import the library:**
 
 ```svelte
-import { avatarGenerator } from 'svelte-face';
+import { avatarGenerator } from 'svelte-faces';
 ```
 
 2. **Initialize the avatar generator:**
