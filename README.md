@@ -1,3 +1,6 @@
+> [!WARNING]  
+> This package is not yet published and it needs a lot of work PR is appriciated ;).
+
 ## Svelte face
 **This library provides functionalities for generating and manipulating avatars in Svelte applications.**
 
