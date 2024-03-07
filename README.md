@@ -1,58 +1,75 @@
-# create-svelte
+## Svelte face
+**This library provides functionalities for generating and manipulating avatars in Svelte applications.**
 
-Everything you need to build a Svelte library, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+### Installation
 
-Read more about creating a library [in the docs](https://kit.svelte.dev/docs/packaging).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
+To install the library, run:
 
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+npm install svelte-face
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+**or**
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+yarn add svelte-face
 ```
 
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
+### Usage
 
-## Building
+1. **Import the library:**
 
-To build your library:
-
-```bash
-npm run package
+```svelte
+import { avatarGenerator } from 'svelte-face';
 ```
 
-To create a production version of your showcase app:
+2. **Initialize the avatar generator:**
 
-```bash
-npm run build
+It's recommended to initialize the library once in your application, potentially in a top-level component or a dedicated initialization service.
+
+```svelte
+await avatarGenerator.initialize();
 ```
 
-You can preview the production build with `npm run preview`.
+3. **Generate feature options:**
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+- This retrieves options for customizing specific parts of the avatar.
 
-## Publishing
-
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
-
-To publish your library to [npm](https://www.npmjs.com):
-
-```bash
-npm publish
+```svelte
+const featureOptions = avatarGenerator.getFeatureOptions(['hair', 'eyes', 'mouth']);
 ```
+
+- `featureOptions` will be an array of objects, each containing:
+    - `max`: The maximum number of styles available for that feature.
+    - `parts`: An array of available options for that feature, including their SVG content and path information.
+
+4. **Generate random avatar:**
+
+```svelte
+const randomConfig = await avatarGenerator.generateRandomAvatar();
+```
+
+- `randomConfig` will contain an object with keys corresponding to avatar parts and their corresponding chosen styles.
+
+5. **Generate avatar preview:**
+
+```svelte
+const previewSvg = avatarGenerator.generatePreview(randomConfig);
+```
+
+- Replace `randomConfig` with your desired avatar configuration object.
+- `previewSvg` will be a string containing the SVG code for the generated avatar preview.
+
+6. **Get PNG of avatar:**
+
+```svelte
+const avatarElement = document.getElementById('my-avatar'); // Replace with your element ID
+const pngDataUrl = await avatarGenerator.getPng(avatarElement);
+```
+
+- `pngDataUrl` will be a string containing the base64 encoded data URL of the avatar PNG image.
+
+### Additional Notes
+
+- Refer to the library code for detailed information about available functions and their parameters.
+- This is a basic overview of usage. Consider exploring the library's source code and experimenting for a more comprehensive understanding of its capabilities.
