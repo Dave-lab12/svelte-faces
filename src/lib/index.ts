@@ -7,6 +7,7 @@ import { get } from 'svelte/store';
 
 const loadParts = async () => {
     const modules = import.meta.glob('./assets/avatar/part/**/*.svg', { query: '?raw', import: 'default', eager: true });
+    loadedParts.set([]);
     const promises = Object.entries(modules).map(async ([path, loadModule]) => {
         loadedParts.update((parts) => {
             parts.push({ path, svg: loadModule });
@@ -18,6 +19,7 @@ const loadParts = async () => {
 
 const loadPreview = async () => {
     const modules = import.meta.glob('./assets/avatar/preview/**/*.svg', { query: '?raw', import: 'default', eager: true });
+    loadedPreview.set([]);
     const promises = Object.entries(modules).map(async ([path, loadModule]) => {
         loadedPreview.update((parts) => {
             parts.push({ path, svg: loadModule });
