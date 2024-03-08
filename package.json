@@ -1,6 +1,6 @@
 {
 	"name": "svelte-faces",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "A dynamic Svelte library for effortlessly creating and customizing SVG avatars.",
 	"scripts": {
 		"dev": "vite dev",
