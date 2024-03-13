@@ -1,7 +1,7 @@
 import type { AvatarConfig } from '$lib/types.js'
 import { AvatarStyleCount, SVGFilter } from '$lib/constant.js'
 import { updateSvgPath, getRandomStyle } from '$lib/utils.js'
-import html2canvas from 'html2canvas';
+import html2canvas, { type Html2CanvasOptions } from 'html2canvas';
 import { avatarParts, loadedParts, loadedPreview, avatarPreview, isInitialized } from '$lib/store.js'
 import { get } from 'svelte/store';
 
@@ -45,6 +45,7 @@ const getFeatureOptions = (parts: (keyof AvatarConfig)[]) => {
 }
 
 const getAllParts = () => {
+
     const allPartsWithType = get(loadedParts).map(updateSvgPath);
     return allPartsWithType
 }
@@ -84,12 +85,14 @@ function generatePreview(config, flipped = false) {
     return svgContent;
 }
 
-const getPng = async (dom: HTMLElement) => {
-    const canvas = await html2canvas(dom, {
+const getPng = async ({ element, width, height, options }: { element: HTMLElement, width: number, height: number, options?: Html2CanvasOptions }) => {
+    const canvas = await html2canvas(element, {
         logging: false,
         scale: window.devicePixelRatio,
-        width: dom.offsetWidth,
-        height: dom.offsetHeight,
+        width,
+        height,
+        backgroundColor: null,
+        ...options
     });
     return canvas.toDataURL('image/png');
 }
