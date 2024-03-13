@@ -74,7 +74,7 @@ const previewSvg = avatarGenerator.generatePreview(randomConfig);
 
 ```svelte
 const avatarElement = document.getElementById('my-avatar'); // Replace with your element ID
-const pngDataUrl = await avatarGenerator.getPng(avatarElement);
+const pngDataUrl = await avatarGenerator.getPng({ element: avatarElement, width: 150, height: 175 });
 ```
 
 - `pngDataUrl` will be a string containing the base64 encoded data URL of the avatar PNG image.
