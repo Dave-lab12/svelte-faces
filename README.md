@@ -3,6 +3,10 @@
 
 ## Svelte face
 **This library provides functionalities for generating and manipulating avatars in Svelte applications.**
+It is heavly inspired by [notion avatar](https://notion-avatar.vercel.app/)
+## Demo
+![Screen Recording Mar 13](https://github.com/Dave-lab12/svelte-faces/assets/56738450/58f46d63-4e4c-4a11-960b-687d9e28a8af)
+
 
 ### Installation
 
@@ -12,10 +16,13 @@ To install the library, run:
 npm install svelte-faces
 ```
 
+```bash
+yarn add svelte-faces
+```
 **or**
 
 ```bash
-yarn add svelte-faces
+pnpm add svelte-faces
 ```
 
 ### Usage
@@ -71,6 +78,12 @@ const pngDataUrl = await avatarGenerator.getPng(avatarElement);
 ```
 
 - `pngDataUrl` will be a string containing the base64 encoded data URL of the avatar PNG image.
+
+## Assets
+
+- Illustration designer: [@Felix Wong](https://www.producthunt.com/@felix12777) on ProductHunt
+- Pack of illustrations: [Noto avatar](https://abstractlab.gumroad.com/l/noto-avatar)
+- Assets licensed under [CC0](https://creativecommons.org/publicdomain/zero/1.0/) <img src="./public/icon/cc0.svg" width="50"/>
 
 ### Additional Notes
 
